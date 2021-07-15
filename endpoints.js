@@ -25,28 +25,28 @@ app.post("/post-review", async (req, res) => {
   const { showId, rating, description } = req.body;
 
   if (nullOrEmpty(showId)) {
-    return res.json({ error: "Show ID parameter must be provided [showId]" });
+    return res.status(400).json({ error: "Show ID parameter must be provided [showId]" });
   }
 
   if (nullOrEmpty(rating)) {
-    return res.json({ error: "Rating parameter must be provided [rating]" });
+    return res.status(400).json({ error: "Rating parameter must be provided [rating]" });
   }
 
   if (parseInt(rating) < 0 || parseInt(rating) > 5) {
-    return res.json({
+    return res.status(400).json({
       error:
         "Rating parameter should be a valid number between 0 and 5 [rating]",
     });
   }
 
   if (nullOrEmpty(description)) {
-    return res.json({
+    return res.status(400).json({
       error: "Description parameter must be a non empty string [description]",
     });
   }
 
   if (description && description.length > 255) {
-    return res.json({
+    return res.status(400).json({
       error:
         "Description string should be less than 256 characters [description]",
     });
@@ -60,7 +60,7 @@ app.post("/post-review", async (req, res) => {
   const currentShow = shows.find((show) => show.id === showId);
 
   if (!currentShow) {
-    return res.json({ error: "Show with a given id not found" });
+    return res.status(400).json({ error: "Show with a given id not found" });
   }
 
   const index = shows.indexOf(currentShow);

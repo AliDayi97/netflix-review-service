@@ -25,7 +25,7 @@ describe("Post review", () => {
       rating: "3",
       description: "My awesome description",
     });
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty("error");
     expect(res.body.error).toEqual(
       "Show ID parameter must be provided [showId]"
@@ -37,7 +37,7 @@ describe("Post review", () => {
       showId: "s19",
       description: "My awesome description",
     });
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty("error");
     expect(res.body.error).toEqual(
       "Rating parameter must be provided [rating]"
@@ -50,7 +50,7 @@ describe("Post review", () => {
       rating: "12",
       description: "My awesome description",
     });
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty("error");
     expect(res.body.error).toEqual(
       "Rating parameter should be a valid number between 0 and 5 [rating]"
@@ -62,7 +62,7 @@ describe("Post review", () => {
       showId: "s19",
       rating: "3",
     });
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty("error");
     expect(res.body.error).toEqual(
       "Description parameter must be a non empty string [description]"
@@ -74,7 +74,7 @@ describe("Post review", () => {
       showId: "s19",
       rating: "3",
     });
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty("error");
     expect(res.body.error).toEqual(
       "Description parameter must be a non empty string [description]"
