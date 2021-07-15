@@ -1,0 +1,5 @@
+POST https://netflix-auth.openwrks.com/connect/token
+content-type: application/x-www-form-urlencoded
+authorization: Basic applicant:g*8gdw24XX45gsawfDDcsza@e
+
+grant_type=client_credentials&scope=netflix.shows.read
